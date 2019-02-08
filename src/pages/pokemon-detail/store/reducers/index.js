@@ -1,30 +1,30 @@
 import {
-  GET_POKEMONS_REQUEST,
-  GET_POKEMONS_SUCCESS,
-  GET_POKEMONS_FAILURE,
+  GET_POKEMON_DETAIL_REQUEST,
+  GET_POKEMON_DETAIL_SUCCESS,
+  GET_POKEMON_DETAIL_FAILURE,
 } from '../actions/types';
 
 const initialState = {
-  pokemons: [],
+  pokemonDetail: {},
   success: false,
 };
 
-const pokemonListReducer = (state = initialState, action) => {
+const pokemonDetailReducer = (state = initialState, action) => {
   const { type, response, error } = action;
 
   switch (type) {
-    case GET_POKEMONS_REQUEST:
+    case GET_POKEMON_DETAIL_REQUEST:
       return {
         ...state,
         success: false,
       };
-    case GET_POKEMONS_SUCCESS:
+    case GET_POKEMON_DETAIL_SUCCESS:
       return {
         ...state,
         success: true,
-        pokemons: response.data.results,
+        pokemonDetail: response.data,
       };
-    case GET_POKEMONS_FAILURE:
+    case GET_POKEMON_DETAIL_FAILURE:
       return {
         ...state,
         success: false,
@@ -35,4 +35,4 @@ const pokemonListReducer = (state = initialState, action) => {
   }
 };
 
-export default pokemonListReducer;
+export default pokemonDetailReducer;

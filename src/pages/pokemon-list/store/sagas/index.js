@@ -1,12 +1,12 @@
 import {
   put, takeLatest, fork, all,
 } from 'redux-saga/effects';
+import { getPokemons as getPokemonsService } from '#services/pokemon';
 import { GET_POKEMONS_REQUEST } from '../actions/types';
 import {
   getPokemonsSuccess,
   getPokemonsFailure,
 } from '../actions';
-import { getPokemons as getPokemonsService } from '../../../../services/pokemon';
 
 export function* getPokemons() {
   try {

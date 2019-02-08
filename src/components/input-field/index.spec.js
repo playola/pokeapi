@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Button from './index';
+import InputField from './index';
 
-describe('Button component', () => {
-  const wrapper = shallow(<Button />);
+describe('InputField component', () => {
+  const wrapper = shallow(<InputField />);
 
   it('should mount', () => expect(wrapper).toBeDefined());
 });

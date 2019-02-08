@@ -3,7 +3,7 @@ import {
   GET_POKEMONS_SUCCESS,
   GET_POKEMONS_FAILURE,
 } from '../actions/types';
-import pokemonsReducer from './index';
+import pokemonListReducer from './index';
 
 const initialState = {
   pokemons: [],
@@ -25,16 +25,16 @@ const pokemonsResponseMock = {
   },
 };
 
-describe('pokemonsReducer', () => {
+describe('pokemonListReducer', () => {
   it('should return initial state when action is undefined', () => {
-    expect(pokemonsReducer(initialState, 'default')).toEqual(initialState);
+    expect(pokemonListReducer(initialState, 'default')).toEqual(initialState);
   });
 
   it('should return correct state when GET_POKEMONS_REQUEST action is called', () => {
     const action = {
       type: GET_POKEMONS_REQUEST,
     };
-    expect(pokemonsReducer(initialState, action)).toEqual({
+    expect(pokemonListReducer(initialState, action)).toEqual({
       ...initialState,
       success: false,
     });
@@ -46,7 +46,7 @@ describe('pokemonsReducer', () => {
       response: pokemonsResponseMock,
     };
 
-    expect(pokemonsReducer(initialState, action)).toEqual({
+    expect(pokemonListReducer(initialState, action)).toEqual({
       ...initialState,
       success: true,
       pokemons: action.response.data.results,
@@ -61,7 +61,7 @@ describe('pokemonsReducer', () => {
       },
     };
 
-    expect(pokemonsReducer(initialState, action)).toEqual({
+    expect(pokemonListReducer(initialState, action)).toEqual({
       ...initialState,
       success: false,
       error: action.error,

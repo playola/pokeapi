@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Button from './index';
+import Header from './index';
 
-describe('Button component', () => {
-  const wrapper = shallow(<Button />);
+describe('Header component', () => {
+  const wrapper = shallow(<Header />);
 
   it('should mount', () => expect(wrapper).toBeDefined());
 });

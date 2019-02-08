@@ -21,5 +21,5 @@ npm run dev
 See http://localhost:8080.
 
 ## References
-* https://pokeapi.co/
+* https://pokeapi.co/docs/v2.html
 * https://github.com/axios/axios
