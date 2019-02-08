@@ -1,0 +1,9 @@
+# Packages
+/node_modules
+
+# Prod
+/dist
+/build
+
+# Tests
+/coverage
