@@ -7,6 +7,10 @@ import { getPokemonDetail } from './store/actions';
 import { DetailsWrapper } from './styles';
 
 const PokemonDetail = React.memo(({ pokemonDetail, match, getPokemonDetail }) => {
+  const {
+    id, name, moves, types,
+  } = pokemonDetail;
+
   /**
    * Fetch pokemon detail from API when the component mounts.
    */
@@ -18,13 +22,13 @@ const PokemonDetail = React.memo(({ pokemonDetail, match, getPokemonDetail }) =>
     <div>
       <Header />
       <DetailsWrapper>
-        <span>{ `ID: ${pokemonDetail.id}` }</span>
-        <span>{ `Name: ${capitalizeFirstLetter(pokemonDetail.name)}` }</span>
-        { pokemonDetail.moves && pokemonDetail.moves.length > 0
-          ? <span>{ `Moves: ${pokemonDetail.moves.length}` }</span>
+        <span>{ `ID: ${id}` }</span>
+        <span>{ `Name: ${capitalizeFirstLetter(name)}` }</span>
+        { moves && moves.length > 0
+          ? <span>{ `Moves: ${moves.length}` }</span>
           : <span>Moves: 0</span>
         }
-        { pokemonDetail.types && pokemonDetail.types.map(typeItem => (
+        { types && types.map(typeItem => (
           <span key={`index_${typeItem.slot}`}>
             { `Type slot ${typeItem.slot}: ${capitalizeFirstLetter(typeItem.type.name)}` }
           </span>
@@ -35,8 +39,17 @@ const PokemonDetail = React.memo(({ pokemonDetail, match, getPokemonDetail }) =>
 });
 
 PokemonDetail.propTypes = {
-  pokemonDetail: PropTypes.shape({}).isRequired,
-  match: PropTypes.shape({}).isRequired,
+  pokemonDetail: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    moves: PropTypes.arrayOf(PropTypes.object),
+    types: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      index: PropTypes.string,
+    }),
+  }).isRequired,
   getPokemonDetail: PropTypes.func.isRequired,
 };
 

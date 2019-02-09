@@ -11,15 +11,24 @@ import {
 
 export function* getPokemons(payload) {
   try {
+    /**
+     * Get the cookie and check if exsists and if it's valid.
+     */
     const cookieValue = getCookie('pokemons');
     if (cookieValue && !payload.offset) {
       yield put(getPokemonsSuccess(cookieValue));
     } else {
       const response = yield getPokemonsService(payload.offset);
+      /**
+       * Check if we need to concat with the current value or push for the first time.
+       */
       const newCookieValue = cookieValue && cookieValue.length > 0
         ? cookieValue.concat(response.data.results)
         : response.data.results;
-      setCookie('pokemons', newCookieValue, 60);
+      /**
+       * Set cookie with the updated new pokemons list.
+       */
+      setCookie('pokemons', newCookieValue, { maxAge: 60 });
       yield put(getPokemonsSuccess(response.data.results));
     }
   } catch (err) {

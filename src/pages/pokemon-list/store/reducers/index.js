@@ -6,7 +6,8 @@ import {
 
 const initialState = {
   pokemons: [],
-  success: false,
+  loading: false,
+  error: null,
 };
 
 const pokemonListReducer = (state = initialState, action) => {
@@ -16,18 +17,18 @@ const pokemonListReducer = (state = initialState, action) => {
     case GET_POKEMONS_REQUEST:
       return {
         ...state,
-        success: false,
+        loading: true,
       };
     case GET_POKEMONS_SUCCESS:
       return {
         ...state,
-        success: true,
+        loading: false,
         pokemons: state.pokemons.concat(response),
       };
     case GET_POKEMONS_FAILURE:
       return {
         ...state,
-        success: false,
+        loading: false,
         error,
       };
     default:

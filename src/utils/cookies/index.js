@@ -4,12 +4,12 @@ const cookies = new Cookies();
 
 /**
  * Set the cookie on the browser document.
- * @param {string}  key      Key name for the cookie.
+ * @param {string}  key      Key name for the cookie. Cookie example: "foo=[{ name: 'foo' }]".
  * @param {any}     value    Cookie value assigned to the key. For example: [{ name: 'foo' }]
- * @param {number}  maxAge   Expiration time for the cookie in milliseconds.
+ * @param {object}  options  Options like 'maxAge' for the cookie in milliseconds.
  */
-export const setCookie = (key, value, maxAge) => (
-  cookies.set(key, value, { path: '/', maxAge })
+export const setCookie = (key, value, options) => (
+  cookies.set(key, value, { path: '/', ...options })
 );
 
 /**
@@ -23,8 +23,10 @@ export const getCookie = key => (
 
 /**
  * Removes a cookie value by key.
- * @param   {string} key  Key name for the cookie. Cookie example: "foo=[{ name: 'foo' }]".
+ * @param {string}  key      Key name for the cookie. Cookie example: "foo=[{ name: 'foo' }]".
+ * @param {any}     value    Cookie value assigned to the key. For example: [{ name: 'foo' }]
+ * @param {object}  options  Options like 'maxAge' for the cookie in milliseconds.
  */
-export const removeCookie = key => (
-  cookies.remove(key, { path: '/' })
+export const removeCookie = (key, value, options) => (
+  cookies.remove(key, value, { path: '/', ...options })
 );

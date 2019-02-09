@@ -30,9 +30,10 @@ const PokemonList = React.memo(({ pokemons, getPokemons }) => {
   }, []);
 
   /**
-   * Infinite scroll that fetches pokemons from API.
+   * Infinite scroll behavior.
    */
   useEffect(() => {
+    // TODO: add debounce.
     window.onscroll = () => {
       const docElement = document.documentElement;
       if (window.innerHeight + docElement.scrollTop === docElement.offsetHeight) {

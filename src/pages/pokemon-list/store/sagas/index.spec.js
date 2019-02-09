@@ -1,3 +1,9 @@
+/**
+ * TODO: fix Sagas tests.
+ * The tests are not working due to a 'redux-saga-test-plan' issue.
+ * An error is displayed when running 'npm run test' regarding the module.
+ */
+
 import { testSaga } from 'redux-saga-test-plan';
 import { fork } from 'redux-saga/effects';
 import root, { getPokemons, watchGetPokemons } from './index';
