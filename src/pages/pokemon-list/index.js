@@ -12,6 +12,7 @@ import {
 import { getPokemons } from './store/actions';
 import {
   PokemonsWrapper,
+  FormWrapper,
   PokemonWrapper,
   PokemonText,
 } from './styles';
@@ -49,18 +50,20 @@ const PokemonList = React.memo(({ pokemons, getPokemons }) => {
 
   return (
     <div>
-      <Header />
+      <Header disabled />
       <PokemonsWrapper>
-        <InputField
-          placeholder="Filter by name"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
-        <InputField
-          placeholder="Filter by id"
-          value={id}
-          onChange={e => setId(e.target.value)}
-        />
+        <FormWrapper>
+          <InputField
+            placeholder="Filter by name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
+          <InputField
+            placeholder="Filter by id"
+            value={id}
+            onChange={e => setId(e.target.value)}
+          />
+        </FormWrapper>
         { filteredPokemons && filteredPokemons.length > 0
         && filteredPokemons.map((pokemon, index) => (
           <PokemonWrapper key={`${index}_${pokemon.name}`}>

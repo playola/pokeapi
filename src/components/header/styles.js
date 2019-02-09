@@ -11,6 +11,7 @@ export const HeaderWrapper = styled.div`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')}
 `;
 
 export const Title = styled.span`

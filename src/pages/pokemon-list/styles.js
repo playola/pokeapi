@@ -8,6 +8,14 @@ export const PokemonsWrapper = styled.div`
   padding: 20px;
 `;
 
+export const FormWrapper = styled.div`
+  @media(min-width: ${breakpoint.tablet}px) {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+  }
+`;
+
 export const PokemonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
