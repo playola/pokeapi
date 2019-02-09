@@ -36,6 +36,11 @@ The tests are not 100% finished, but the test pattern is defined and should be s
 - Style: styled components provider theme, breakpoints, and global styles.
 - Utils: reusable utilities and helpers.
 
+## Improvements
+Due to time constraints the tests are not finished, and there is an issue with the cookies.
+
+The ideal solution would be to update the existing cookie in the browser when we receive new data. There is an issue when the setCookie method is called, the cookie is not updated in the browser. A solution could be to set a new cookie for each API call, but this solution have not a good performance. So fow now, the cookie update is working only for the first API call.
+
 ## References
 * https://pokeapi.co/docs/v2.html
 * https://github.com/axios/axios

@@ -27,8 +27,9 @@ export function* getPokemons(payload) {
         : response.data.results;
       /**
        * Set cookie with the updated new pokemons list.
+       * Expiration time fixed to one day.
        */
-      setCookie('pokemons', newCookieValue, { maxAge: 60 });
+      setCookie('pokemons', newCookieValue, { maxAge: 24 * 60 * 60 });
       yield put(getPokemonsSuccess(response.data.results));
     }
   } catch (err) {
