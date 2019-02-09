@@ -8,9 +8,9 @@ import {
   getPokemonsFailure,
 } from '../actions';
 
-export function* getPokemons() {
+export function* getPokemons(payload) {
   try {
-    const response = yield getPokemonsService();
+    const response = yield getPokemonsService(payload.offset);
     yield put(getPokemonsSuccess(response));
   } catch (err) {
     yield put(getPokemonsFailure(err));

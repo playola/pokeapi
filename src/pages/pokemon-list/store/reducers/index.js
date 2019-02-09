@@ -22,7 +22,7 @@ const pokemonListReducer = (state = initialState, action) => {
       return {
         ...state,
         success: true,
-        pokemons: response.data.results,
+        pokemons: state.pokemons.concat(response.data.results),
       };
     case GET_POKEMONS_FAILURE:
       return {

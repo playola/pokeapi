@@ -4,8 +4,9 @@ import {
   GET_POKEMONS_FAILURE,
 } from './types';
 
-export const getPokemons = () => ({
+export const getPokemons = offset => ({
   type: GET_POKEMONS_REQUEST,
+  offset,
 });
 
 export const getPokemonsSuccess = response => ({
